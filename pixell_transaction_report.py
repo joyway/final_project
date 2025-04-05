@@ -19,10 +19,10 @@ total_transaction_amount = 0
 valid_record = True
 error_message = ''
 
-os.system('cls' if os.name == 'nt' else 'clear')
+os.system('cls' if os.name == 'nt' else 'clear') # Starting a process with a shell, possible injection detected, security issue.
 
 try:
-    with open('bank_data.csv', 'r') as csv_file:
+    with open('bank_data.csv', 'r') as csv_file: 
         reader = csv.reader(csv_file)
         for row in list(reader)[1:]:
             # Reset valid record and error message for each iteration
@@ -53,7 +53,7 @@ try:
 
                 # Update the customer's account balance based on the transaction type
                 if transaction_type == 'deposit':
-                    customer_data[customer_id]['balance'] += transaction_amount
+                    customer_data[customer_id]['balance'] += transaction_amount 
                     total_transaction_count += 1
                     total_transaction_amount += transaction_amount
                 else: # Substract from the balance
